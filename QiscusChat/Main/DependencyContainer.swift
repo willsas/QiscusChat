@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import QiscusCore
 
 /**
 ##Dependency Container
@@ -29,9 +30,23 @@ class DependecyContainer{
 
 
 extension DependecyContainer: SessionServiceFactory{
-    func requestToLogin(username: String, completion: (Result<String, Error>) -> Void) {
-        // do login logic here
+    func requestToLogin(userID: String, userKey: String, username: String, completion: @escaping (Result<Bool, Error>) -> Void) {
+        
+        QiscusCore.setUser(userId: userID, userKey: userKey, username: username, onSuccess: { (user) in
+            
+            _ = QiscusCore.connect(delegate: UIApplication.shared.delegate as! AppDelegate)
+            
+            print("succes login with user : \(user)")
+            completion(.success(true))
+            return
+            
+        }) { (err) in
+            completion(.failure(NetworkingError.other(err.message)))
+        }
+        
+        
     }
+ 
     
 }
 
@@ -43,6 +58,16 @@ extension DependecyContainer: ChatServiceFactory{
 
 
 extension DependecyContainer: RemoteNotificationFactory{
+    
+    func requestToRegisterNewDeviceToken(withToken token: String, completion: @escaping (Result<Bool, Error>) -> Void) {
+        QiscusCore.shared.registerDeviceToken(token: token, onSuccess: { (isSucces) in
+            completion(.success(isSucces))
+            return
+        }) { (err) in
+            completion(.failure(NetworkingError.other(err.message)))
+        }
+    }
+    
     
     func requestDevicePermission() {
         
@@ -61,6 +86,16 @@ extension DependecyContainer: RemoteNotificationFactory{
         UIApplication.shared.registerForRemoteNotifications()
         
         
+    }
+    
+    
+}
+
+
+extension DependecyContainer: PersistenceServiceFactory{
+    
+    func makeUserDefault() -> Persistable {
+        return UserDefaultPersistenceService()
     }
     
     

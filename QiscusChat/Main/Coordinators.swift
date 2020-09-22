@@ -31,6 +31,14 @@ struct SignInCoordinator: Coordinator{
         self.factory = factory
     }
     
+    func switchToChatListViewController(){
+        guard let window = UIApplication.shared.windows.first else {return}
+        let nav = UINavigationController(rootViewController: factory.makeChatListViewController())
+        nav.navigationBar.prefersLargeTitles = true
+        window.switchRootViewController(nav)
+        
+    }
+    
     
 }
 

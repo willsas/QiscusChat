@@ -33,11 +33,14 @@ protocol ViewControllerFactory{
 
 protocol SessionServiceFactory {
     
-    /// Request user to login
+    /// Request user to login and SET Qiscuss connect delegate to app delegate if success
     /// - Parameters:
-    ///   - username: username
-    ///   - completion: String Result type
-    func requestToLogin(username: String, completion: (Result<String, Error>) -> Void)
+    ///   - userKey: username
+    ///   - userID: userid
+    ///   - username: user display name
+    ///   - completion: Bool is succes Result type
+    func requestToLogin(userID: String, userKey: String, username: String, completion: @escaping (Result<Bool, Error>) -> Void)
+    
 }
 
 protocol ChatServiceFactory {
@@ -50,6 +53,19 @@ protocol RemoteNotificationFactory {
     
     /// Request device notification permission
     func requestDevicePermission()
+    
+    
+    /// Register new token every new token came up
+    /// - Parameters:
+    ///   - withToken: String token
+    ///   - completion: Result type of Bool, if registering is complete
+    func requestToRegisterNewDeviceToken(withToken token: String, completion: @escaping (Result<Bool, Error>) -> Void)
+}
+
+protocol PersistenceServiceFactory {
+    
+    /// Return Persistable object based on user default
+    func makeUserDefault() -> Persistable
 }
 
 protocol CoordinatorFactory {

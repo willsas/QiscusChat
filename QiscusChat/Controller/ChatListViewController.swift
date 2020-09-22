@@ -31,7 +31,9 @@ class ChatListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        navigationItem.largeTitleDisplayMode = .always
+        navigationItem.title = "Chats"
+        
         // Do any additional setup after loading the view.
     }
 
