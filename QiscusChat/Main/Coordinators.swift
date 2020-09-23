@@ -59,4 +59,8 @@ struct ChatListCoordinator: Coordinator {
         self.factory = factory
     }
     
+    func pushToChatRoomViewController(withRoom room: ChatRoomModel){
+        navigationController?.pushViewController(factory.makeChatRoomViewController(chatRoom: room), animated: true)
+    }
+    
 }

@@ -15,6 +15,10 @@
 		BE7ECEC4251B8CCA00891C35 /* RoomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7ECEC2251B8CCA00891C35 /* RoomTableViewCell.swift */; };
 		BE7ECEC5251B8CCA00891C35 /* RoomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE7ECEC3251B8CCA00891C35 /* RoomTableViewCell.xib */; };
 		BE7ECEC8251B92CC00891C35 /* CALayer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7ECEC7251B92CC00891C35 /* CALayer+Extension.swift */; };
+		BE7ECECB251BBB9300891C35 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7ECECA251BBB9300891C35 /* ChatModel.swift */; };
+		BE7ECECD251BC00A00891C35 /* UUID+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7ECECC251BC00A00891C35 /* UUID+Extension.swift */; };
+		BE7ECED0251BCD9800891C35 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7ECECE251BCD9800891C35 /* ChatTableViewCell.swift */; };
+		BE7ECED1251BCD9800891C35 /* ChatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE7ECECF251BCD9800891C35 /* ChatTableViewCell.xib */; };
 		BE826774251A3BBC00E6BE9D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE826773251A3BBC00E6BE9D /* AppDelegate.swift */; };
 		BE82677D251A3BBD00E6BE9D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE82677C251A3BBD00E6BE9D /* Assets.xcassets */; };
 		BE826780251A3BBD00E6BE9D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE82677E251A3BBD00E6BE9D /* LaunchScreen.storyboard */; };
@@ -51,6 +55,10 @@
 		BE7ECEC2251B8CCA00891C35 /* RoomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomTableViewCell.swift; sourceTree = "<group>"; };
 		BE7ECEC3251B8CCA00891C35 /* RoomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RoomTableViewCell.xib; sourceTree = "<group>"; };
 		BE7ECEC7251B92CC00891C35 /* CALayer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Extension.swift"; sourceTree = "<group>"; };
+		BE7ECECA251BBB9300891C35 /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
+		BE7ECECC251BC00A00891C35 /* UUID+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UUID+Extension.swift"; sourceTree = "<group>"; };
+		BE7ECECE251BCD9800891C35 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
+		BE7ECECF251BCD9800891C35 /* ChatTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatTableViewCell.xib; sourceTree = "<group>"; };
 		BE826770251A3BBC00E6BE9D /* QiscusChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QiscusChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE826773251A3BBC00E6BE9D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE82677C251A3BBD00E6BE9D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -113,6 +121,8 @@
 			children = (
 				BE7ECEC2251B8CCA00891C35 /* RoomTableViewCell.swift */,
 				BE7ECEC3251B8CCA00891C35 /* RoomTableViewCell.xib */,
+				BE7ECECE251BCD9800891C35 /* ChatTableViewCell.swift */,
+				BE7ECECF251BCD9800891C35 /* ChatTableViewCell.xib */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -156,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				BE7ECEBC251B772D00891C35 /* ChatRoomModel.swift */,
+				BE7ECECA251BBB9300891C35 /* ChatModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -212,6 +223,7 @@
 				BE7ECEBE251B7FE600891C35 /* Date+Extension.swift */,
 				BE7ECEC0251B861100891C35 /* Array+Extension.swift */,
 				BE7ECEC7251B92CC00891C35 /* CALayer+Extension.swift */,
+				BE7ECECC251BC00A00891C35 /* UUID+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -318,6 +330,7 @@
 				BE826798251A409800E6BE9D /* SignInViewController.xib in Resources */,
 				BE8267A0251A41F900E6BE9D /* ChatRoomViewController.xib in Resources */,
 				BE82679C251A40BE00E6BE9D /* ChatListViewController.xib in Resources */,
+				BE7ECED1251BCD9800891C35 /* ChatTableViewCell.xib in Resources */,
 				BE82677D251A3BBD00E6BE9D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -374,6 +387,7 @@
 				BE8267BA251A7FC100E6BE9D /* UIAlertController+Extension.swift in Sources */,
 				BE826774251A3BBC00E6BE9D /* AppDelegate.swift in Sources */,
 				BE7ECEBB251B769D00891C35 /* UITableView+Extension.swift in Sources */,
+				BE7ECED0251BCD9800891C35 /* ChatTableViewCell.swift in Sources */,
 				BE7ECEC1251B861100891C35 /* Array+Extension.swift in Sources */,
 				BE82678F251A3E3200E6BE9D /* FactoryProtocols.swift in Sources */,
 				BE826797251A409800E6BE9D /* SignInViewController.swift in Sources */,
@@ -386,8 +400,10 @@
 				BE8267AC251A4D5C00E6BE9D /* URLSessionNetworkingService.swift in Sources */,
 				BE7ECEBF251B7FE600891C35 /* Date+Extension.swift in Sources */,
 				BE82679B251A40BE00E6BE9D /* ChatListViewController.swift in Sources */,
+				BE7ECECB251BBB9300891C35 /* ChatModel.swift in Sources */,
 				BE7ECEC4251B8CCA00891C35 /* RoomTableViewCell.swift in Sources */,
 				BE8267B6251A764700E6BE9D /* PersistenceService.swift in Sources */,
+				BE7ECECD251BC00A00891C35 /* UUID+Extension.swift in Sources */,
 				BE826793251A3FA800E6BE9D /* ChatService.swift in Sources */,
 				BE826791251A3F9300E6BE9D /* QiscusChatService.swift in Sources */,
 				BE8267B4251A6F4700E6BE9D /* UIWindow+Extension.swift in Sources */,
@@ -535,6 +551,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YF2M6C4WM8;
 				INFOPLIST_FILE = QiscusChat/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -555,6 +572,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YF2M6C4WM8;
 				INFOPLIST_FILE = QiscusChat/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

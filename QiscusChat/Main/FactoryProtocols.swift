@@ -28,7 +28,7 @@ protocol ViewControllerFactory{
     func makeChatListViewController() -> ChatListViewController
     
     /// Return chat room view controller
-    func makeChatRoomViewController() -> ChatRoomViewController
+    func makeChatRoomViewController(chatRoom: ChatRoomModel) -> ChatRoomViewController
 }
 
 protocol SessionServiceFactory {

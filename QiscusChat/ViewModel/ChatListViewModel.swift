@@ -47,7 +47,10 @@ class ChatListViewModel: NSObject {
     
     /// Setup ChatService
     private func setupChatService(){
-        chatService.delegate = self
+        chatService.roomListDelegate = self
+        chatService.onNewRooms = { [weak self] (rooms) in
+            self?.rooms = rooms
+        }
     }
     
     
@@ -56,11 +59,20 @@ class ChatListViewModel: NSObject {
         chatService.requestGetRooms()
     }
     
+    func getRoomAt(_ index: Int) -> ChatRoomModel?{
+        return rooms[safe: index]
+    }
+//
+    func setChatServiceDelegate(){
+        chatService.roomListDelegate = self
+
+    }
+    
 }
 
 
 
-extension ChatListViewModel: ChatServiceDelegate{
+extension ChatListViewModel: RoomListDelegate{
     
     func onGetNewRooms(rooms: [ChatRoomModel]) {
         self.rooms = rooms

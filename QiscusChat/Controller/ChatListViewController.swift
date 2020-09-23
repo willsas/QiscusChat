@@ -34,13 +34,22 @@ class ChatListViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit {
+        
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         vm.delegate = self
         setupUI()
         setupTableView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         vm.requestChatRooms()
+        vm.setChatServiceDelegate()
     }
     
     
@@ -94,6 +103,8 @@ extension ChatListViewController: ChatListViewModelDelegate{
 
 extension ChatListViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //
+        guard let selectedRoom = vm.getRoomAt(indexPath.row) else {return}
+        coordinator.pushToChatRoomViewController(withRoom: selectedRoom)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

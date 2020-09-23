@@ -27,4 +27,13 @@ extension UITableView{
         return dequeueReusableCell(withIdentifier: className) as? T
     }
     
+    /// table view scroll to bottom
+    /// - Parameter animated: animation, default is true
+    func tableViewScrollToBottom(animated: Bool = true) {
+        let sections = self.numberOfSections
+        let rows = self.numberOfRows(inSection: sections - 1)
+        if (rows > 0){
+            self.scrollToRow(at: IndexPath(row: rows - 1, section: sections - 1), at: .bottom, animated: animated)
+        }
+    }
 }

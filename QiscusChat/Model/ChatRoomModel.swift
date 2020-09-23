@@ -10,7 +10,7 @@ import Foundation
 
 
 
-struct ChatRoomModel: Codable {
+struct ChatRoomModel {
     
     var uniqueID: String
     var id: String
@@ -25,7 +25,7 @@ struct ChatRoomModel: Codable {
 }
 
 
-enum ChatRoomType: String, Codable{
+enum ChatRoomType: String{
     case channel = "channel"
     case group = "group"
     case single = "single"

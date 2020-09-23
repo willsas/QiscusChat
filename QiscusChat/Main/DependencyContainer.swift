@@ -18,7 +18,7 @@ implementation of FactoryProtocol funcitonality. All of each view controller fun
 
 
 
-class DependecyContainer{
+final class DependecyContainer{
     
     private let networkService: NetworkingService
     
@@ -127,8 +127,8 @@ extension DependecyContainer: ViewControllerFactory{
         return ChatListViewController(factory: self)
     }
     
-    func makeChatRoomViewController() -> ChatRoomViewController {
-        return ChatRoomViewController(factory: self)
+    func makeChatRoomViewController(chatRoom: ChatRoomModel) -> ChatRoomViewController {
+        return ChatRoomViewController(factory: self, room: chatRoom)
     }
     
     
