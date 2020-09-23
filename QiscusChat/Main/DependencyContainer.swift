@@ -52,7 +52,7 @@ extension DependecyContainer: SessionServiceFactory{
 
 extension DependecyContainer: ChatServiceFactory{
     func makeChatService() -> ChatService {
-        return ChatManager()
+        return QiscusChatService()
     }
 }
 

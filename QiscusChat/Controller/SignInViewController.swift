@@ -14,10 +14,9 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var userKeyTextFieldOutlet: UITextField!
     @IBOutlet weak var displayNameTextFieldOutlet: UITextField!
     
-    
     typealias Factory = SessionServiceFactory & CoordinatorFactory
-    
     private let factory: Factory
+    
     private let vm: SignInViewModel
     
     private lazy var coordinator: SignInCoordinator = {
@@ -38,21 +37,35 @@ class SignInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        navigationItem.title = "Sign In"
         vm.delegate = self
-        userIdTextFieldOutlet.delegate = self
-        userKeyTextFieldOutlet.delegate = self
-        displayNameTextFieldOutlet.delegate = self
+        setupUI()
+        setupTextField()
         
     }
     
+    
+    
+    // Actions
     @IBAction func signInButtonAction(_ sender: Any) {
         print("username: \(vm.username)")
         print("userid: \(vm.userId)")
         print("userkey: \(vm.userKey)")
-        
         vm.requestToSignIn()
+    }
+    
+    
+    
+    /// Setup view controller screen ui
+    private func setupUI(){
+        navigationItem.title = "Sign In"
+    }
+    
+    
+    /// Setup textfield all delegate
+    private func setupTextField(){
+        userIdTextFieldOutlet.delegate = self
+        userKeyTextFieldOutlet.delegate = self
+        displayNameTextFieldOutlet.delegate = self
     }
     
 }

@@ -29,23 +29,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    // did we actually need a remote notification? because it needs APN certicfication, but there you go
+    
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         
         var tokenString: String = ""
         for i in 0..<deviceToken.count {
             tokenString += String(format: "%02.2hhx", deviceToken[i] as CVarArg)
         }
-        print("token = \(tokenString)")
+        print("Get new token = \(tokenString)")
         
         handleNewToken(tokenString)
-     
-        
         
     }
     
     
+}
+
+
+// MARK: - Some Private Function
+extension AppDelegate{
     
+    /// Setup First screen for initial view controller
     private func setupFirstScreen(){
         
         let initialViewController: UIViewController = UINavigationController(rootViewController: isLoggedIn() ? dependencies.makeChatListViewController() : dependencies.makeSignInViewController())
@@ -56,10 +60,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     
+    /// Determine if user alreadyr logged in or not
+    /// - Returns: Bool
     private func isLoggedIn() -> Bool{
         QiscusCore.hasSetupUser()
     }
     
+    
+    
+    /// Handle new token from notif and save it to user default and if it is logged in requestToRegisterDeviceToken
+    /// - Parameter token: Token
     private func handleNewToken(_ token: String){
         // new token save to persistence
         userDefault.saveData(token, forKey: .deviceToken)
@@ -77,9 +87,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    
+    
 }
 
 
+// MARK: - QiscusConnectionDelegate Implementaion
 extension AppDelegate: QiscusConnectionDelegate{
     
     func connectionState(change state: QiscusConnectionState) {
@@ -102,6 +115,7 @@ extension AppDelegate: QiscusConnectionDelegate{
 }
 
 
+// MARK: - UNUserNotificationCenterDelegate implementation
 extension AppDelegate: UNUserNotificationCenterDelegate{
     
     
