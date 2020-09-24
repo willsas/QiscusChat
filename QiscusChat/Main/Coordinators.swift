@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import QiscusCore
 
 
 protocol Coordinator {
@@ -59,8 +60,8 @@ struct ChatListCoordinator: Coordinator {
         self.factory = factory
     }
     
-    func pushToChatRoomViewController(withRoom room: ChatRoomModel){
-        navigationController?.pushViewController(factory.makeChatRoomViewController(chatRoom: room), animated: true)
+    func pushToChatRoomViewController(withRoom room: (RoomModel, ChatRoomModel)){
+        navigationController?.pushViewController(factory.makeChatRoomViewController(room: room), animated: true)
     }
     
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import QiscusCore
 
 protocol ChatListViewModelDelegate: class {
     
@@ -22,9 +23,8 @@ class ChatListViewModel: NSObject {
     
     typealias Factory = ChatServiceFactory
     private var factory: Factory
-    
-    private lazy var chatService: ChatService = {
-        return factory.makeChatService()
+    private lazy var chatListService: ChatListService = {
+        return factory.makeChatListService()
     }()
     
     private var rooms = [ChatRoomModel](){
@@ -32,6 +32,8 @@ class ChatListViewModel: NSObject {
               delegate?.onReloadData()
           }
       }
+    
+    private var roomsModel = [RoomModel]()
     
     
     weak var delegate: ChatListViewModelDelegate?
@@ -47,24 +49,23 @@ class ChatListViewModel: NSObject {
     
     /// Setup ChatService
     private func setupChatService(){
-        chatService.roomListDelegate = self
-        chatService.onNewRooms = { [weak self] (rooms) in
-            self?.rooms = rooms
-        }
+        chatListService.delegate = self
     }
     
     
     /// Call requestGetRooms in ChatServie
     func requestChatRooms(){
-        chatService.requestGetRooms()
+        chatListService.requestGetRooms()
     }
     
-    func getRoomAt(_ index: Int) -> ChatRoomModel?{
-        return rooms[safe: index]
+    func getRoomAt(_ index: Int) -> (RoomModel, ChatRoomModel)?{
+        guard let room = rooms[safe: index],
+            let roomModel = roomsModel[safe: index] else {return nil}
+        return (roomModel, room)
     }
-//
+    
     func setChatServiceDelegate(){
-        chatService.roomListDelegate = self
+        chatListService.delegate = self
 
     }
     
@@ -74,8 +75,9 @@ class ChatListViewModel: NSObject {
 
 extension ChatListViewModel: RoomListDelegate{
     
-    func onGetNewRooms(rooms: [ChatRoomModel]) {
-        self.rooms = rooms
+    func onGetNewRooms(rooms: ([RoomModel], [ChatRoomModel])) {
+        self.rooms = rooms.1
+        self.roomsModel = rooms.0
     }
     
     func onError(err: Error) {

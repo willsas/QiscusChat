@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import QiscusCore
 
 protocol ChatRoomViewModelDelegate: class {
     func onReloadData()
@@ -18,12 +19,12 @@ class ChatRoomViewModel: NSObject {
     
     typealias Factory = ChatServiceFactory
     private var factory: Factory
-    private var roomID: String
+    private var room: RoomModel
     
     private var chats = [ChatModel]()
     
     private lazy var chatService: ChatService = {
-        return factory.makeChatService()
+        return factory.makeChatService(room: room)
     }()
     
     
@@ -31,11 +32,11 @@ class ChatRoomViewModel: NSObject {
     
     var typeChat: String = ""
     
-    init(factory: Factory, roomID: String) {
+    init(factory: Factory, room: RoomModel) {
         self.factory = factory
-        self.roomID = roomID
+        self.room = room
         super.init()
-        chatService.chatDelegate = self
+        chatService.delegate = self
     }
     
     
@@ -63,23 +64,23 @@ class ChatRoomViewModel: NSObject {
     
     private func markAsRead(){
         guard let lastCommentID = chats.last?.lastCommentID else {return}
-        chatService.onReadMessageWithCommentID(commentID: lastCommentID, roomID: roomID)
+        chatService.onReadMessageWithCommentID(commentID: lastCommentID, roomID: room.id)
     }
     
     
     
     func requestSendMessage(){
-        chatService.requestSendChat(message: typeChat, withRoomID: roomID)
+        chatService.requestSendChat(message: typeChat, withRoomID: room.id)
         delegate?.onSuccesSendChat()
     }
     
     func requestLastMessages(){
-        chatService.getPreviousChat(withRoomID: roomID, withLimit: 20)
+        chatService.getPreviousChat(withRoomID: room.id, withLimit: 20)
     }
-    
-    func setChatServiceDelegate(){
-        chatService.chatDelegate = self
-    }
+//
+//    func setChatServiceDelegate(){
+//        chatService.delegate = self
+//    }
   
 }
 

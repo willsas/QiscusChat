@@ -19,11 +19,12 @@
 		BE7ECECD251BC00A00891C35 /* UUID+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7ECECC251BC00A00891C35 /* UUID+Extension.swift */; };
 		BE7ECED0251BCD9800891C35 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7ECECE251BCD9800891C35 /* ChatTableViewCell.swift */; };
 		BE7ECED1251BCD9800891C35 /* ChatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE7ECECF251BCD9800891C35 /* ChatTableViewCell.xib */; };
+		BE7ECED3251C55AB00891C35 /* RoomChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7ECED2251C55AB00891C35 /* RoomChatService.swift */; };
 		BE826774251A3BBC00E6BE9D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE826773251A3BBC00E6BE9D /* AppDelegate.swift */; };
 		BE82677D251A3BBD00E6BE9D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE82677C251A3BBD00E6BE9D /* Assets.xcassets */; };
 		BE826780251A3BBD00E6BE9D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE82677E251A3BBD00E6BE9D /* LaunchScreen.storyboard */; };
 		BE82678F251A3E3200E6BE9D /* FactoryProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE82678E251A3E3200E6BE9D /* FactoryProtocols.swift */; };
-		BE826791251A3F9300E6BE9D /* QiscusChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE826790251A3F9300E6BE9D /* QiscusChatService.swift */; };
+		BE826791251A3F9300E6BE9D /* MessageChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE826790251A3F9300E6BE9D /* MessageChatService.swift */; };
 		BE826793251A3FA800E6BE9D /* ChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE826792251A3FA800E6BE9D /* ChatService.swift */; };
 		BE826797251A409800E6BE9D /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE826795251A409800E6BE9D /* SignInViewController.swift */; };
 		BE826798251A409800E6BE9D /* SignInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE826796251A409800E6BE9D /* SignInViewController.xib */; };
@@ -59,13 +60,14 @@
 		BE7ECECC251BC00A00891C35 /* UUID+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UUID+Extension.swift"; sourceTree = "<group>"; };
 		BE7ECECE251BCD9800891C35 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		BE7ECECF251BCD9800891C35 /* ChatTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatTableViewCell.xib; sourceTree = "<group>"; };
+		BE7ECED2251C55AB00891C35 /* RoomChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomChatService.swift; sourceTree = "<group>"; };
 		BE826770251A3BBC00E6BE9D /* QiscusChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QiscusChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE826773251A3BBC00E6BE9D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE82677C251A3BBD00E6BE9D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BE82677F251A3BBD00E6BE9D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BE826781251A3BBD00E6BE9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE82678E251A3E3200E6BE9D /* FactoryProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactoryProtocols.swift; sourceTree = "<group>"; };
-		BE826790251A3F9300E6BE9D /* QiscusChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiscusChatService.swift; sourceTree = "<group>"; };
+		BE826790251A3F9300E6BE9D /* MessageChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageChatService.swift; sourceTree = "<group>"; };
 		BE826792251A3FA800E6BE9D /* ChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatService.swift; sourceTree = "<group>"; };
 		BE826795251A409800E6BE9D /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		BE826796251A409800E6BE9D /* SignInViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignInViewController.xib; sourceTree = "<group>"; };
@@ -242,7 +244,8 @@
 			isa = PBXGroup;
 			children = (
 				BE826792251A3FA800E6BE9D /* ChatService.swift */,
-				BE826790251A3F9300E6BE9D /* QiscusChatService.swift */,
+				BE826790251A3F9300E6BE9D /* MessageChatService.swift */,
+				BE7ECED2251C55AB00891C35 /* RoomChatService.swift */,
 			);
 			name = "Chat Sevice";
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 				BE82679F251A41F900E6BE9D /* ChatRoomViewController.swift in Sources */,
 				BE8267B0251A4DF500E6BE9D /* ChatListViewModel.swift in Sources */,
 				BE8267A5251A457F00E6BE9D /* SignInViewModel.swift in Sources */,
+				BE7ECED3251C55AB00891C35 /* RoomChatService.swift in Sources */,
 				BE7ECEBD251B772D00891C35 /* ChatRoomModel.swift in Sources */,
 				BE8267A7251A494A00E6BE9D /* DependencyContainer.swift in Sources */,
 				BE7ECEC8251B92CC00891C35 /* CALayer+Extension.swift in Sources */,
@@ -405,7 +409,7 @@
 				BE8267B6251A764700E6BE9D /* PersistenceService.swift in Sources */,
 				BE7ECECD251BC00A00891C35 /* UUID+Extension.swift in Sources */,
 				BE826793251A3FA800E6BE9D /* ChatService.swift in Sources */,
-				BE826791251A3F9300E6BE9D /* QiscusChatService.swift in Sources */,
+				BE826791251A3F9300E6BE9D /* MessageChatService.swift in Sources */,
 				BE8267B4251A6F4700E6BE9D /* UIWindow+Extension.swift in Sources */,
 				BE8267AA251A4C0700E6BE9D /* NetworkingService.swift in Sources */,
 				BE8267B2251A4E0300E6BE9D /* ChatRoomViewModel.swift in Sources */,

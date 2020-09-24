@@ -7,19 +7,8 @@
 //
 
 import Foundation
+import QiscusCore
 
-
-protocol RoomListDelegate: class {
-    
-    /// Get error from chat service
-    /// - Parameter err: err with lcoalize desc
-    func onError(err: Error)
-    
-    /// Get new chat rooom
-    /// - Parameter rooms: array of ChatRoomModel
-    func onGetNewRooms(rooms: [ChatRoomModel])
-    
-}
 
 protocol ChatDelegate: class {
     
@@ -42,8 +31,8 @@ protocol ChatService {
     /// - Parameter message: string message
     func requestSendChat(message: String, withRoomID: String)
     
-    /// request new rooms
-    func requestGetRooms()
+//    /// request new rooms
+//    func requestGetRooms()
     
     
     /// Get previous messages
@@ -62,14 +51,38 @@ protocol ChatService {
     
     
     /// room list delegate
-    var roomListDelegate: RoomListDelegate?  {get set}
+//    var roomListDelegate: RoomListDelegate?  {get set}
     
     /// chat list delegate
-    var chatDelegate: ChatDelegate?  {get set}
+    var delegate: ChatDelegate?  {get set}
     
     
-    var onNewRooms: ([ChatRoomModel]) -> Void {get set}
-    var onNewChat: (ChatModel) -> Void {get set}
+//    var onNewRooms: ([ChatRoomModel]) -> Void {get set}
+//    var onNewChat: (ChatModel) -> Void {get set}
     
 }
 
+
+
+
+protocol RoomListDelegate: class {
+    
+    /// Get error from chat service
+    /// - Parameter err: err with lcoalize desc
+    func onError(err: Error)
+    
+    /// Get new chat rooom
+    /// - Parameter rooms: array of ChatRoomModel
+    func onGetNewRooms(rooms: ([RoomModel], [ChatRoomModel]))
+    
+}
+
+
+
+protocol ChatListService {
+    
+    var delegate: RoomListDelegate?  {get set}
+    
+    /// request new rooms
+    func requestGetRooms()
+}

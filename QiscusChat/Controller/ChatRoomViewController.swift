@@ -8,6 +8,7 @@
 
 import UIKit
 import IQKeyboardManager
+import QiscusCore
 
 class ChatRoomViewController: UIViewController {
     
@@ -20,6 +21,7 @@ class ChatRoomViewController: UIViewController {
     private let factory: Factory
     private let vm: ChatRoomViewModel
     private let room: ChatRoomModel
+    private let roomModel: RoomModel
     
     private let notificationCenter = NotificationCenter.default
     private lazy var safeAreaInset: UIEdgeInsets? = {
@@ -30,10 +32,11 @@ class ChatRoomViewController: UIViewController {
     
     
     
-    init(factory: Factory, room: ChatRoomModel) {
+    init(factory: Factory, room: (RoomModel, ChatRoomModel)) {
         self.factory = factory
-        self.room = room
-        self.vm = ChatRoomViewModel(factory: factory, roomID: room.id)
+        self.room = room.1
+        self.roomModel = room.0
+        self.vm = ChatRoomViewModel(factory: factory, room: room.0)
         super.init(nibName: nil, bundle: nil)
     }
     

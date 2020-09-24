@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import QiscusCore
 
 /**
 ##FACTORY PROTOCOL
@@ -28,7 +29,7 @@ protocol ViewControllerFactory{
     func makeChatListViewController() -> ChatListViewController
     
     /// Return chat room view controller
-    func makeChatRoomViewController(chatRoom: ChatRoomModel) -> ChatRoomViewController
+    func makeChatRoomViewController(room: (RoomModel, ChatRoomModel)) -> ChatRoomViewController
 }
 
 protocol SessionServiceFactory {
@@ -46,7 +47,9 @@ protocol SessionServiceFactory {
 protocol ChatServiceFactory {
     
     /// Make Chat Service Object
-    func makeChatService() -> ChatService
+    func makeChatService(room: RoomModel) -> ChatService
+    /// make chat list object
+    func makeChatListService() -> ChatListService
 }
 
 protocol RemoteNotificationFactory {

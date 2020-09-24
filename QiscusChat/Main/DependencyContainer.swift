@@ -51,9 +51,14 @@ extension DependecyContainer: SessionServiceFactory{
 }
 
 extension DependecyContainer: ChatServiceFactory{
-    func makeChatService() -> ChatService {
-        return QiscusChatService()
+    func makeChatService(room: RoomModel) -> ChatService {
+        return QiscusChatService(room: room)
     }
+    
+    func makeChatListService() -> ChatListService {
+        return RoomChatService()
+    }
+    
 }
 
 
@@ -127,8 +132,8 @@ extension DependecyContainer: ViewControllerFactory{
         return ChatListViewController(factory: self)
     }
     
-    func makeChatRoomViewController(chatRoom: ChatRoomModel) -> ChatRoomViewController {
-        return ChatRoomViewController(factory: self, room: chatRoom)
+    func makeChatRoomViewController(room: (RoomModel, ChatRoomModel)) -> ChatRoomViewController {
+        return ChatRoomViewController(factory: self, room: room)
     }
     
     
