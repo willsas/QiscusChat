@@ -48,7 +48,6 @@ class ChatListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         vm.requestChatRooms()
-        vm.setChatServiceDelegate()
     }
     
     
