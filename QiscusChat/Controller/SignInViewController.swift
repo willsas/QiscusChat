@@ -54,14 +54,14 @@ class SignInViewController: UIViewController {
     }
     
     
-    
     /// Setup view controller screen ui
     private func setupUI(){
         navigationItem.title = "Sign In"
+        navigationItem.largeTitleDisplayMode = .never
     }
     
     
-    /// Setup textfield all delegate
+    /// Setup textfield  delegate
     private func setupTextField(){
         userIdTextFieldOutlet.delegate = self
         userKeyTextFieldOutlet.delegate = self
@@ -70,6 +70,7 @@ class SignInViewController: UIViewController {
     
 }
 
+// MARK: UITextFieldDelegate
 extension SignInViewController: UITextFieldDelegate{
     func textFieldDidChangeSelection(_ textField: UITextField) {
         switch textField {
@@ -89,7 +90,7 @@ extension SignInViewController: UITextFieldDelegate{
 }
 
 
-
+// MARK: SignInViewModelDelegate
 extension SignInViewController: SignInViewModelDelegate{
     
     func onError(error: Error) {

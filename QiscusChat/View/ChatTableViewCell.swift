@@ -26,7 +26,11 @@ class ChatTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        contentViewOutlet.backgroundColor = .gray
+        contentViewOutlet.backgroundColor = #colorLiteral(red: 0.07843137255, green: 0.4941176471, blue: 0.9843137255, alpha: 1)
+        contentTitleOutlet.textColor = .white
+        contentViewOutlet.layer.cornerRadius = 4
+        dateTitleOutlet.textColor = .white
+        statusTitleOutlet.textColor = .white
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

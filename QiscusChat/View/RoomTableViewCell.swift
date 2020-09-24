@@ -38,7 +38,7 @@ class RoomTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+//        imageOutlet.layer.roudCornerType(type: .rounded)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

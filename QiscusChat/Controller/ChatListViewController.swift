@@ -23,7 +23,6 @@ class ChatListViewController: UIViewController {
     }()
     
     
-    
     init(factory: Factory) {
         self.factory = factory
         self.vm = ChatListViewModel(factory: factory)
@@ -35,7 +34,7 @@ class ChatListViewController: UIViewController {
     }
     
     deinit {
-        
+        print("\(self.description) deinit")
     }
     
     
@@ -87,6 +86,7 @@ class ChatListViewController: UIViewController {
 }
 
 
+// MARK: ChatListViewModelDelegate
 extension ChatListViewController: ChatListViewModelDelegate{
     
     func onReloadData() {
@@ -101,6 +101,7 @@ extension ChatListViewController: ChatListViewModelDelegate{
 }
 
 
+// MARK: UITableViewDelegate
 extension ChatListViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let selectedRoom = vm.getRoomAt(indexPath.row) else {return}

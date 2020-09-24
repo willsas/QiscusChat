@@ -15,10 +15,8 @@ factory protocol is one of the approach of protocol oriented programming and dep
 
 - DESCRIPTION: All the functionality, network request, class dependecies, custom class dependencies, put it as a protocol here
 
-- SOURCE:  [dependecy injection by swift by sundell]  https://www.swiftbysundell.com/articles/dependency-injection-using-factories-in-swift/
+- SOURCE:  [dependecy injection ]  https://www.swiftbysundell.com/articles/dependency-injection-using-factories-in-swift/
 */
-
-
 
 protocol ViewControllerFactory{
     
@@ -47,9 +45,12 @@ protocol SessionServiceFactory {
 protocol ChatServiceFactory {
     
     /// Make Chat Service Object
+    /// - DESCRIPTION: Get this object if you want to get newest chat from given room model
     func makeChatService(room: RoomModel) -> ChatService
-    /// make chat list object
-    func makeChatListService() -> ChatListService
+    
+    /// make room list object
+    /// - DESCRIPTION: Get this object if you want to get newest room model or/and chat room model
+    func makeRoomListService() -> RoomListService
 }
 
 protocol RemoteNotificationFactory {

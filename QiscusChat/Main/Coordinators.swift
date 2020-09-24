@@ -32,6 +32,8 @@ struct SignInCoordinator: Coordinator{
         self.factory = factory
     }
     
+    
+    /// Switch window to chat list view controller
     func switchToChatListViewController(){
         guard let window = UIApplication.shared.windows.first else {return}
         let nav = UINavigationController(rootViewController: factory.makeChatListViewController())
@@ -60,6 +62,10 @@ struct ChatListCoordinator: Coordinator {
         self.factory = factory
     }
     
+    
+    /// Push to chat room view controller
+    /// - Parameter room: given tuple of RoomModel, and ChatRoomModel
+    /// - note: Why would you put delegate on RoomModel, should I import QiscusCore to  all over the file?, thanks
     func pushToChatRoomViewController(withRoom room: (RoomModel, ChatRoomModel)){
         navigationController?.pushViewController(factory.makeChatRoomViewController(room: room), animated: true)
     }

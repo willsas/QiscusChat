@@ -10,7 +10,7 @@ import Foundation
 import QiscusCore
 
 
-class RoomChatService: ChatListService {
+class QiscusRoomListService: RoomListService {
     
     weak var delegate: RoomListDelegate?
     
@@ -77,6 +77,8 @@ class RoomChatService: ChatListService {
     
     
     
+    // MARK: - protocol implementation
+    
     func requestGetRooms() {
         requestRoomsFromLocal()
         requestRoomsFromServer()
@@ -88,7 +90,7 @@ class RoomChatService: ChatListService {
 
 
 
-extension RoomChatService: QiscusCoreDelegate{
+extension QiscusRoomListService: QiscusCoreDelegate{
     
     func onRoomMessageReceived(_ room: RoomModel, message: CommentModel) {
         

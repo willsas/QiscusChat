@@ -16,8 +16,6 @@ protocol ChatDelegate: class {
     /// - Parameter err: err with lcoalize desc
     func onError(err: Error)
     
-    /// Get new
-    
     /// Get new chat
     /// - Parameter chat: ChatModel
     func onGetNewChat(chat: ChatModel)
@@ -27,12 +25,13 @@ protocol ChatDelegate: class {
 
 protocol ChatService {
     
+    
+    /// chat list delegate
+    var delegate: ChatDelegate?  {get set}
+    
     /// perform send a mesage
     /// - Parameter message: string message
     func requestSendChat(message: String, withRoomID: String)
-    
-//    /// request new rooms
-//    func requestGetRooms()
     
     
     /// Get previous messages
@@ -49,17 +48,7 @@ protocol ChatService {
     ///   - roomID: room id
     func onReadMessageWithCommentID(commentID: String, roomID: String)
     
-    
-    /// room list delegate
-//    var roomListDelegate: RoomListDelegate?  {get set}
-    
-    /// chat list delegate
-    var delegate: ChatDelegate?  {get set}
-    
-    
-//    var onNewRooms: ([ChatRoomModel]) -> Void {get set}
-//    var onNewChat: (ChatModel) -> Void {get set}
-    
+  
 }
 
 
@@ -71,16 +60,17 @@ protocol RoomListDelegate: class {
     /// - Parameter err: err with lcoalize desc
     func onError(err: Error)
     
-    /// Get new chat rooom
-    /// - Parameter rooms: array of ChatRoomModel
+    /// Get new chat room after calling requstGetRoom()
+    /// - Parameter rooms: a tuple of array RoomModel and ChatRoomModel
     func onGetNewRooms(rooms: ([RoomModel], [ChatRoomModel]))
     
 }
 
 
 
-protocol ChatListService {
+protocol RoomListService {
     
+    /// room list delegate
     var delegate: RoomListDelegate?  {get set}
     
     /// request new rooms

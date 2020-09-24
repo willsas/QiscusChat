@@ -24,13 +24,7 @@ class ChatRoomViewController: UIViewController {
     private let roomModel: RoomModel
     
     private let notificationCenter = NotificationCenter.default
-    private lazy var safeAreaInset: UIEdgeInsets? = {
-        let window = UIApplication.shared.windows.first
-        return window?.safeAreaInsets
-    }()
-    
-    
-    
+   
     
     init(factory: Factory, room: (RoomModel, ChatRoomModel)) {
         self.factory = factory
@@ -46,8 +40,8 @@ class ChatRoomViewController: UIViewController {
     
     deinit {
         notificationCenter.removeObserver(self)
+        print("\(self.description) deinit")
     }
-    
     
     
     
@@ -64,7 +58,6 @@ class ChatRoomViewController: UIViewController {
         super.viewWillAppear(animated)
         keyboardIQSetup(isEnable: false)
         vm.requestLastMessages()
-//        vm.setChatServiceDelegate()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -78,14 +71,15 @@ class ChatRoomViewController: UIViewController {
     }
     
     
+    // Actions
+    
     @IBAction func sendButtonAction(_ sender: Any) {
         vm.requestSendMessage()
     }
     
     @IBAction func attachButtonAction(_ sender: Any) {
-        
+        print("attach file button tapped")
     }
-    
     
     @objc
     private func handleKeyboard(_ notification: Notification){
@@ -107,6 +101,8 @@ class ChatRoomViewController: UIViewController {
         })
     }
     
+    
+    /// Setup tableview delegate datasource and register cell
     private func setupTableView(){
         tableViewOutlet.delegate = self
         tableViewOutlet.dataSource = vm
@@ -114,20 +110,26 @@ class ChatRoomViewController: UIViewController {
     }
     
     
+    /// Setup view controller ui
     private func setupUI(){
         navigationItem.title = room.name
-        
+        navigationItem.largeTitleDisplayMode = .never
     }
+    
     
     private func setupTextField(){
         textFieldOutlet.delegate = self
     }
     
+    /// Observe keyboard frame changes
     private func setupKeyboardObserver(){
         notificationCenter.addObserver(self, selector: #selector(ChatRoomViewController.handleKeyboard(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         notificationCenter.addObserver(self, selector: #selector(ChatRoomViewController.handleKeyboard(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
+    
+    /// Enable and disableing IQKeyboard setup, should touch outside, and toolbar
+    /// - Parameter isEnable: is enable IQ keyboard
     private func keyboardIQSetup(isEnable: Bool){
         if isEnable{
             IQKeyboardManager.shared().isEnabled = true
@@ -143,7 +145,7 @@ class ChatRoomViewController: UIViewController {
     
 }
 
-
+// MARK: ChatRoomViewmodelDelegate
 extension ChatRoomViewController: ChatRoomViewModelDelegate{
     func onError(err: Error) {
         UIAlertController.basicAlert(title: "ERROR", message: err.localizedDescription, vc: self)
@@ -161,11 +163,12 @@ extension ChatRoomViewController: ChatRoomViewModelDelegate{
 }
 
 
-
+// MARK: UITableViewDelegate
 extension ChatRoomViewController: UITableViewDelegate{
     
 }
 
+// MARK: UITTextFieldDelegate
 extension ChatRoomViewController: UITextFieldDelegate{
     func textFieldDidChangeSelection(_ textField: UITextField) {
         vm.typeChat = textField.text ?? ""

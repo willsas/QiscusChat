@@ -10,8 +10,15 @@ import UIKit
 import QiscusCore
 
 protocol ChatRoomViewModelDelegate: class {
+    
+    /// OnNeedReload Table
     func onReloadData()
+    
+    /// get any error
+    /// - Parameter err: error type
     func onError(err: Error)
+    
+    /// Succes send chat done append to chats array
     func onSuccesSendChat()
 }
 
@@ -40,6 +47,10 @@ class ChatRoomViewModel: NSObject {
     }
     
     
+    // MARK: - Private funcitons
+    
+    /// Handle coming new chat, new or status chages or any other new chat, and sorting it from oldes to newest to modified chats array
+    /// - Parameter chat: ChatModel
     private func handleNewChat(_ chat: ChatModel){
         
         //determine if chat not available then append
@@ -62,29 +73,33 @@ class ChatRoomViewModel: NSObject {
         
     }
     
+    
+    /// mark as red when new message coming
     private func markAsRead(){
         guard let lastCommentID = chats.last?.lastCommentID else {return}
         chatService.onReadMessageWithCommentID(commentID: lastCommentID, roomID: room.id)
     }
     
     
+    // MARK: - ViewController funcitons
     
+    
+    /// Request send message with text in  local properties typeChat from controller textfield binding
     func requestSendMessage(){
         chatService.requestSendChat(message: typeChat, withRoomID: room.id)
         delegate?.onSuccesSendChat()
     }
     
+    
+    /// Get new last message with limit 20, and fired the delegate
     func requestLastMessages(){
         chatService.getPreviousChat(withRoomID: room.id, withLimit: 20)
     }
-//
-//    func setChatServiceDelegate(){
-//        chatService.delegate = self
-//    }
+
   
 }
 
-
+// MARK: ChatDelegate
 extension ChatRoomViewModel: ChatDelegate{
     func onGetNewChat(chat: ChatModel) {
         handleNewChat(chat)
@@ -96,6 +111,7 @@ extension ChatRoomViewModel: ChatDelegate{
 }
 
 
+// MARK: UITableViewDataSource
 extension ChatRoomViewModel: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

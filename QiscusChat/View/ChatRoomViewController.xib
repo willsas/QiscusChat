@@ -31,19 +31,19 @@
                             <rect key="frame" x="20" y="5" width="374" height="40"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ubk-ta-RS5">
-                                    <rect key="frame" x="0.0" y="0.0" width="21" height="40"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                     <state key="normal" image="paperclip" catalog="system"/>
                                     <connections>
                                         <action selector="attachButtonAction:" destination="-1" eventType="touchUpInside" id="tTu-FG-ZfD"/>
                                     </connections>
                                 </button>
                                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KO4-3v-MM7">
-                                    <rect key="frame" x="31" y="0.0" width="313" height="40"/>
+                                    <rect key="frame" x="50" y="0.0" width="274" height="40"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gWC-bR-SM4">
-                                    <rect key="frame" x="354" y="0.0" width="20" height="40"/>
+                                    <rect key="frame" x="334" y="0.0" width="40" height="40"/>
                                     <state key="normal" image="arrow.right.circle.fill" catalog="system">
                                         <color key="titleColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
@@ -53,11 +53,15 @@
                                 </button>
                             </subviews>
                             <constraints>
+                                <constraint firstItem="gWC-bR-SM4" firstAttribute="height" secondItem="ubk-ta-RS5" secondAttribute="height" id="5bt-nk-0l3"/>
+                                <constraint firstItem="ubk-ta-RS5" firstAttribute="height" secondItem="PHD-2y-dc7" secondAttribute="height" id="Lb0-WQ-em7"/>
+                                <constraint firstItem="gWC-bR-SM4" firstAttribute="width" secondItem="ubk-ta-RS5" secondAttribute="width" id="gd5-lq-f8R"/>
+                                <constraint firstItem="ubk-ta-RS5" firstAttribute="width" secondItem="PHD-2y-dc7" secondAttribute="height" multiplier="1:1" id="s8d-iM-2rk"/>
                                 <constraint firstAttribute="height" constant="40" id="vgP-kq-X5J"/>
                             </constraints>
                         </stackView>
                     </subviews>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="PHD-2y-dc7" firstAttribute="leading" secondItem="wg2-L4-OWs" secondAttribute="leading" constant="20" id="Kh3-DV-S8U"/>
                         <constraint firstAttribute="height" constant="80" id="bFI-js-uOM"/>

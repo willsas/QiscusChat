@@ -16,8 +16,6 @@ implementation of FactoryProtocol funcitonality. All of each view controller fun
 - DESCRIPTION: implement all the FactoryProtocol's protocol  here, and make as a global proerties in app delegate
 */
 
-
-
 final class DependecyContainer{
     
     private let networkService: NetworkingService
@@ -55,8 +53,8 @@ extension DependecyContainer: ChatServiceFactory{
         return QiscusChatService(room: room)
     }
     
-    func makeChatListService() -> ChatListService {
-        return RoomChatService()
+    func makeRoomListService() -> RoomListService {
+        return QiscusRoomListService()
     }
     
 }
@@ -89,7 +87,6 @@ extension DependecyContainer: RemoteNotificationFactory{
             UIApplication.shared.registerUserNotificationSettings(settings)
         }
         UIApplication.shared.registerForRemoteNotifications()
-        
         
     }
     

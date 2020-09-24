@@ -52,10 +52,12 @@ extension AppDelegate{
     /// Setup First screen for initial view controller
     private func setupFirstScreen(){
         
-        let initialViewController: UIViewController = UINavigationController(rootViewController: isLoggedIn() ? dependencies.makeChatListViewController() : dependencies.makeSignInViewController())
+        let initialViewController: UIViewController = isLoggedIn() ? dependencies.makeChatListViewController() : dependencies.makeSignInViewController()
+        let nav = UINavigationController(rootViewController: initialViewController)
+        nav.navigationBar.prefersLargeTitles = true
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.switchRootViewController(initialViewController)
+        window?.switchRootViewController(nav)
         window?.makeKeyAndVisible()
     }
     

@@ -19,7 +19,7 @@
 		BE7ECECD251BC00A00891C35 /* UUID+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7ECECC251BC00A00891C35 /* UUID+Extension.swift */; };
 		BE7ECED0251BCD9800891C35 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7ECECE251BCD9800891C35 /* ChatTableViewCell.swift */; };
 		BE7ECED1251BCD9800891C35 /* ChatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE7ECECF251BCD9800891C35 /* ChatTableViewCell.xib */; };
-		BE7ECED3251C55AB00891C35 /* RoomChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7ECED2251C55AB00891C35 /* RoomChatService.swift */; };
+		BE7ECED3251C55AB00891C35 /* QiscusRoomListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7ECED2251C55AB00891C35 /* QiscusRoomListService.swift */; };
 		BE826774251A3BBC00E6BE9D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE826773251A3BBC00E6BE9D /* AppDelegate.swift */; };
 		BE82677D251A3BBD00E6BE9D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE82677C251A3BBD00E6BE9D /* Assets.xcassets */; };
 		BE826780251A3BBD00E6BE9D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE82677E251A3BBD00E6BE9D /* LaunchScreen.storyboard */; };
@@ -60,7 +60,7 @@
 		BE7ECECC251BC00A00891C35 /* UUID+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UUID+Extension.swift"; sourceTree = "<group>"; };
 		BE7ECECE251BCD9800891C35 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		BE7ECECF251BCD9800891C35 /* ChatTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatTableViewCell.xib; sourceTree = "<group>"; };
-		BE7ECED2251C55AB00891C35 /* RoomChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomChatService.swift; sourceTree = "<group>"; };
+		BE7ECED2251C55AB00891C35 /* QiscusRoomListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiscusRoomListService.swift; sourceTree = "<group>"; };
 		BE826770251A3BBC00E6BE9D /* QiscusChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QiscusChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE826773251A3BBC00E6BE9D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE82677C251A3BBD00E6BE9D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -245,7 +245,7 @@
 			children = (
 				BE826792251A3FA800E6BE9D /* ChatService.swift */,
 				BE826790251A3F9300E6BE9D /* MessageChatService.swift */,
-				BE7ECED2251C55AB00891C35 /* RoomChatService.swift */,
+				BE7ECED2251C55AB00891C35 /* QiscusRoomListService.swift */,
 			);
 			name = "Chat Sevice";
 			sourceTree = "<group>";
@@ -397,7 +397,7 @@
 				BE82679F251A41F900E6BE9D /* ChatRoomViewController.swift in Sources */,
 				BE8267B0251A4DF500E6BE9D /* ChatListViewModel.swift in Sources */,
 				BE8267A5251A457F00E6BE9D /* SignInViewModel.swift in Sources */,
-				BE7ECED3251C55AB00891C35 /* RoomChatService.swift in Sources */,
+				BE7ECED3251C55AB00891C35 /* QiscusRoomListService.swift in Sources */,
 				BE7ECEBD251B772D00891C35 /* ChatRoomModel.swift in Sources */,
 				BE8267A7251A494A00E6BE9D /* DependencyContainer.swift in Sources */,
 				BE7ECEC8251B92CC00891C35 /* CALayer+Extension.swift in Sources */,

@@ -23,8 +23,11 @@ class ChatListViewModel: NSObject {
     
     typealias Factory = ChatServiceFactory
     private var factory: Factory
-    private lazy var chatListService: ChatListService = {
-        return factory.makeChatListService()
+    private var roomsModel = [RoomModel]()
+    
+    
+    private lazy var chatListService: RoomListService = {
+        return factory.makeRoomListService()
     }()
     
     private var rooms = [ChatRoomModel](){
@@ -32,8 +35,6 @@ class ChatListViewModel: NSObject {
               delegate?.onReloadData()
           }
       }
-    
-    private var roomsModel = [RoomModel]()
     
     
     weak var delegate: ChatListViewModelDelegate?
@@ -46,6 +47,8 @@ class ChatListViewModel: NSObject {
         
     }
     
+    // MARK: - Private funcitons
+    
     
     /// Setup ChatService
     private func setupChatService(){
@@ -53,26 +56,30 @@ class ChatListViewModel: NSObject {
     }
     
     
+    
+    // MARK: - ViewController funcitons
+    
     /// Call requestGetRooms in ChatServie
     func requestChatRooms(){
         chatListService.requestGetRooms()
     }
     
+    
+    /// Get a RoomModel and ChatRoomModel with given  index
+    /// - Parameter index: Table view index
+    /// - Returns: tuple of RoomModel and ChatRoomModel
     func getRoomAt(_ index: Int) -> (RoomModel, ChatRoomModel)?{
         guard let room = rooms[safe: index],
             let roomModel = roomsModel[safe: index] else {return nil}
         return (roomModel, room)
     }
     
-    func setChatServiceDelegate(){
-        chatListService.delegate = self
-
-    }
     
 }
 
 
 
+// MARK: RoomListDelegate
 extension ChatListViewModel: RoomListDelegate{
     
     func onGetNewRooms(rooms: ([RoomModel], [ChatRoomModel])) {
@@ -86,7 +93,7 @@ extension ChatListViewModel: RoomListDelegate{
     
 }
 
-
+// MARK: UITableViewDataSource
 extension ChatListViewModel: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

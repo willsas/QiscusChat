@@ -36,8 +36,6 @@ protocol NetworkingService {
 
 
 
-
-
 enum NetworkingError: Error{
     case decodingError(Error?)
     case noNetwork(Error?)

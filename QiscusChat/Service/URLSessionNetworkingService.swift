@@ -12,7 +12,6 @@ struct URLSessionNetworkingService: NetworkingService {
     
     func perform<T>(resource: Resource<T>, completion: @escaping (Result<T, NetworkingError>) -> Void) where T : Decodable, T : Encodable {
         
-        
         // perform networking here
         
     }

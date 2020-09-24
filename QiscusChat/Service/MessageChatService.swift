@@ -21,16 +21,25 @@ class QiscusChatService: ChatService {
     }
     
   
+    /// Convert text only to Comment Model ready to sent
+    /// - Parameters:
+    ///   - text: text only
+    ///   - roomID: room id
+    /// - Returns: return CommentModel ready to sent
     private func makeTextTypeCommentModel(text: String, roomID: String) -> CommentModel{
         let model = CommentModel()
         model.message = text
         model.type = "text"
         model.roomId = roomID
-//        model.extras = [clientIDKey: UUID.chatMessageUUID]
+//        model.extras = [clientIDKey: UUID.chatMessageUUID] // my god, this made the app crash
         return model
     }
     
     
+    
+    /// Convert Raw Comment Model to ChatModel
+    /// - Parameter comment: comment model
+    /// - Returns: ChatModel
     private func makeChatModel(commentModel comment: CommentModel) -> ChatModel{
         var status: ChatModelStatus = .pending
         switch comment.status {
@@ -46,9 +55,8 @@ class QiscusChatService: ChatService {
             break
         }
         
-        print("STATUS MESSAGE: \(comment.status)")
+        print("NEW MESSAGE: \(comment.message) WITH STATUS: \(comment.status)")
         
-
         return ChatModel(uniqueID: comment.uniqId,
                          roomID: comment.roomId,
                          message: comment.message,

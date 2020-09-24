@@ -8,15 +8,12 @@
 
 import Foundation
 
-enum loginSessionType{
-    case login
-    case logout
-}
 
 /// Key for an object that conform Persistable Protocol
 enum PersistenceServiceKey: String{
     
-   case deviceToken
+    /// STRING type
+   case deviceToken = "deviceToken"
     
 }
 
