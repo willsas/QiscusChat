@@ -1,0 +1,44 @@
+PODS:
+  - CocoaAsyncSocket (7.6.4)
+  - CocoaMQTT (1.3.0-rc.1):
+    - CocoaMQTT/Core (= 1.3.0-rc.1)
+  - CocoaMQTT/Core (1.3.0-rc.1):
+    - CocoaAsyncSocket (~> 7.6.3)
+  - IQKeyboardManager (6.5.5)
+  - QiscusCore (1.5.5):
+    - QiscusRealtime (= 1.4.1)
+    - SwiftyJSON
+  - QiscusRealtime (1.4.1):
+    - CocoaMQTT (= 1.3.0-rc.1)
+  - SDWebImage (5.8.4):
+    - SDWebImage/Core (= 5.8.4)
+  - SDWebImage/Core (5.8.4)
+  - SwiftyJSON (5.0.0)
+
+DEPENDENCIES:
+  - IQKeyboardManager (~> 6.5)
+  - QiscusCore
+  - SDWebImage
+
+SPEC REPOS:
+  trunk:
+    - CocoaAsyncSocket
+    - CocoaMQTT
+    - IQKeyboardManager
+    - QiscusCore
+    - QiscusRealtime
+    - SDWebImage
+    - SwiftyJSON
+
+SPEC CHECKSUMS:
+  CocoaAsyncSocket: 694058e7c0ed05a9e217d1b3c7ded962f4180845
+  CocoaMQTT: 3a24a180c2d7759465abbd96d49c655e4399ac35
+  IQKeyboardManager: 3a8b9e603f8b0eeaf5f096a1f2b2cfcf121992ef
+  QiscusCore: 9eb8ec94ac678722275f1be412a17d742fd82981
+  QiscusRealtime: 3988684b309cc5442b7ae1d504b1eb12c81cdc8b
+  SDWebImage: cf6922231e95550934da2ada0f20f2becf2ceba9
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+
+PODFILE CHECKSUM: c8eaed6386916716fb7288725cb77cea95cdc709
+
+COCOAPODS: 1.9.0
